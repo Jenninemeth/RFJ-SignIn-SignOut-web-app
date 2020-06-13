@@ -1,24 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
+
+import Header from './components/header/header.component';
+import HomePage from './pages/homepage/homepage.component';
+import Success from './pages/success/success-page.component.jsx';
+import Logger from './pages/logger/logger.component';
+import AdminSignIn from './pages/admin-sign-in/admin-sign-in';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <Header />
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/success' component={Success} />
+          <Route path='/logger' component={Logger} />
+          
+          <Route exact 
+            path='/admin' 
+            render= {
+              /* {() => 
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : ( 
+                <*/AdminSignIn/* />
+              )*/
+            }
+          /> 
+        </Switch>
     </div>
   );
 }

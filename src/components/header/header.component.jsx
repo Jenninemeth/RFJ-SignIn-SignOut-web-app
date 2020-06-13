@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
+import { Menu, Container, Image } from 'semantic-ui-react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
-import { Menu, Container, Image, Icon } from 'semantic-ui-react';
+import { ReactComponent as User } from '../../assets/male.svg';
+
 
 const Header = () => (
     <Menu fluid id="menu" inverted>
         <Container text>
-            <Link href="/">
+           
                 <Menu.Item header>
                     <Image 
                         size="mini"
@@ -15,18 +16,14 @@ const Header = () => (
                     />
                     RFJ Meiswinkle Daily Sign In & Sign Out
                 </Menu.Item>
-            </Link>
-
-            <Link href="/admin">
+            
+                <Logo></Logo>
+            
                 <Menu.Item header>
-                    <Icon
-                        name="user"
-                        size="large"
-                        color="black"
-                    />
+                    <User/>
                     admin
                 </Menu.Item>
-            </Link>
+            
         </Container>
     </Menu>
     );

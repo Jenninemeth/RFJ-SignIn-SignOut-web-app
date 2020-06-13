@@ -1,8 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-
-import Success from '../success/success-page.component';
-import SignIn from '../../components/sign-in/sign-in.component';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
     return(

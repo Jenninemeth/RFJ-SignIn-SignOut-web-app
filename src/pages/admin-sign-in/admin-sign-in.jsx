@@ -1,9 +1,10 @@
 import React from 'react';
+import LogIn from '../../components/admin-log-in/admin-log-in.component';
 
 const AdminSignIn = () => (
-    <div>
-     <h1>sign in for admin </h1>
-    </div>
+    <div className='log-in'>
+     <LogIn />
+    </div>   
 );
 
 export default AdminSignIn;

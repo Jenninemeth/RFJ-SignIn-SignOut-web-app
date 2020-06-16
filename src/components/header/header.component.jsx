@@ -1,27 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.utils';
 
-import { Menu, Container} from 'semantic-ui-react';
 import logo from '../../assets/logo.jpg';
 
-const Header = () => (
-    <Menu fluid id="menu" inverted>
-        <Container text>
-           
-                <Menu.Item header>
-                    <img src={logo} alt="Logo" width="50em"/>
-                    RFJ Meiswinkle Daily Sign In & Sign Out
-                </Menu.Item>
-            
-                <Menu.Item header>
-                    <svg viewBox="0 0 100 80" width="40" height="40">
-                        <rect width="100" height="15"></rect>
-                        <rect y="30" width="100" height="15"></rect>
-                        <rect y="60" width="100" height="15"></rect>
-                    </svg>
-                </Menu.Item>
-            
-        </Container>
-    </Menu>
-    );
+const Header = ({ currentUser }) => (
+    <div className='header' >
+        <Link className='logo-container' to='/'>
+            <img src={logo} alt="Logo" width="50em"/>
+            RFJ Meiswinkle Daily Sign In & Sign Out
+        </Link>
+
+        <div className='options' >
+            {currentUser ? (
+                <div className='option' onClick={() => auth.signOut()}>
+                    LOG OUT
+                </div>
+                ) : (
+                <Link className='option' to='/admin'>
+                    LOG IN
+                </Link>
+            )}
+        </div> 
+    </div>       
+);
 
 export default Header;

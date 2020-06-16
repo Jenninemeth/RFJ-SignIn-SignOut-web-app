@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
 import SignIn from '../../components/sign-in/sign-in.component';
 import SignOut from '../../components/sign-out/sign-out.component';
 
@@ -41,9 +39,16 @@ class HomePage extends React.Component {
         this.setState({ [name]: value });
         console.log({ [name]: value });
     }
+
+    handleToggle = (event) => {
+        this.setState = ({
+            isSigningIn: !this.state.isSigningIn
+        })
+    }
     
     render() {
         const signInButton = this.state.isSigningIn ? "Signing in" : "Signing Out";
+        
         const confimationMessage = this.state.isSigningIn ? (
             <SignIn />
         ) : (
@@ -69,20 +74,19 @@ class HomePage extends React.Component {
                     <label>
                         I am 
                         
-                            <button 
+                            <button isSigningIn={this.state.isSigningIn}
                                 name='isSigningIn'
+                                onChange={
+                                    this.handleToggle,
+                                console.log("worked")
+                            }
                                 onClick={() => {
                                     this.setState({ isSigningIn: !this.state.isSigningIn });
-                                    console.log("it was clicked");
                                 }}
                             >
                                 {signInButton}
                             </button>
-                        for the day.
-                            {/* <select onChange={this.handleTime} id="time" name="time">
-                                    <option value="true">Sign In</option>
-                                    <option value="false">Sign Out</option>
-                                </select> */}    
+                        for the day. 
                     </label>
 <br></br>
                     <label>

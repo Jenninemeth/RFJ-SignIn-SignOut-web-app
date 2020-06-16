@@ -2,7 +2,6 @@ import React from 'react';
 
 const SignIn = () => (
     <div>
-        <h2>Confirmation</h2>
         <p>Please read through and answer all questions daily. You must sign in at the beginning of your work day.</p>
         <p>Did you complete all necessary COVID-19 protocols to enter the job-site?</p>
        
@@ -18,5 +17,6 @@ const SignIn = () => (
             </div>
         </form>
     </div>
+    
 );
 export default SignIn;

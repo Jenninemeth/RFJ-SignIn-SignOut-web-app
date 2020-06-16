@@ -1,27 +1,23 @@
 import React from 'react';
 
-import { Menu, Container, Image } from 'semantic-ui-react';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
-import { ReactComponent as User } from '../../assets/male.svg';
-
+import { Menu, Container} from 'semantic-ui-react';
+import logo from '../../assets/logo.jpg';
 
 const Header = () => (
     <Menu fluid id="menu" inverted>
         <Container text>
            
                 <Menu.Item header>
-                    <Image 
-                        size="mini"
-                        src="../../assets/logo.svg"
-                    />
+                    <img src={logo} alt="Logo" width="50em"/>
                     RFJ Meiswinkle Daily Sign In & Sign Out
                 </Menu.Item>
             
-                <Logo></Logo>
-            
                 <Menu.Item header>
-                    <User/>
-                    admin
+                    <svg viewBox="0 0 100 80" width="40" height="40">
+                        <rect width="100" height="15"></rect>
+                        <rect y="30" width="100" height="15"></rect>
+                        <rect y="60" width="100" height="15"></rect>
+                    </svg>
                 </Menu.Item>
             
         </Container>

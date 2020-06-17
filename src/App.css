@@ -1,0 +1,59 @@
+/* base styles */
+body, p {
+    font-family: 'futura-pt';
+    font-weight: 400;
+    min-width: 300px;
+    width: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+}
+label {
+    font-family: 'Roboto';
+    font-weight: bold;
+}
+a {
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: black;
+}
+select {
+    font-family: 'Open Sans';
+    font-weight: bold;
+    min-width: 105px;
+    margin: 45px 0;
+      background-color: white;
+      color: black;
+      padding: 10px 5px 10px 25px;
+      border: 1px solid black;
+      display: inline-flex;
+
+}
+* {
+    box-sizing: border-box;
+}
+h2 {
+    font-family: 'futura-pt';
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    margin: 45px 0 0 0;
+}
+/* grids */
+.choices {
+    margin: 45px 5% 0 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+/* small tablet styles */
+@media screen and (min-width: 620px){
+
+}
+/* large tablet & laptop styles */
+@media screen and (min-width: 960px){
+    
+}
+/* desktop styles */
+@media screen and (min-width: 1200px){
+    
+}

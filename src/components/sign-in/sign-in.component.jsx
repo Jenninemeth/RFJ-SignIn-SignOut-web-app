@@ -6,15 +6,18 @@ const SignIn = () => (
         <p>Did you complete all necessary COVID-19 protocols to enter the job-site?</p>
        
         <form>
-            <div>
-                <input type="checkbox" id="yes" name="YES"></input>
-                <label for="yes">Yes</label>
-            </div>
+            <div className='choices'>
+                <div>
+                    <input type="checkbox" id="yes" name="YES"></input>
+                    <label for="yes">Yes</label>
+                </div>
 
-            <div>
-                <input type="checkbox" id="no" name="NO"></input>
-                <label for="yes">No</label>
+                <div>
+                    <input type="checkbox" id="no" name="NO"></input>
+                    <label for="yes">No</label>
+                </div>
             </div>
+            
         </form>
     </div>
     

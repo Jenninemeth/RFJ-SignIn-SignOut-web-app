@@ -1,7 +1,8 @@
 import React from 'react';
 import SignIn from '../../components/sign-in/sign-in.component';
 import SignOut from '../../components/sign-out/sign-out.component';
-
+import CustomButton from '../../components/custom-button/custom-button.component';
+import FormInput from '../../components/form-input/form-input.component';
 
 
 class HomePage extends React.Component {
@@ -59,11 +60,10 @@ class HomePage extends React.Component {
         return(
         <div className='sign-in'>
                 <h2>Please read through and answer all questions daily</h2>
-                <span>Page 1 of 2</span>
 
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Job Number:
+                        1. Job Number:
                         <select id="jobNumber" name="jobNumber" handleChange={this.handleChange}>
                             <option value="18109">18109</option>
                             <option value="23165">23165</option>
@@ -72,9 +72,9 @@ class HomePage extends React.Component {
                     </label>
 <br></br>
                     <label>
-                        I am 
+                        2. I am 
                         
-                            <button isSigningIn={this.state.isSigningIn}
+                            <CustomButton isSigningIn={this.state.isSigningIn}
                                 name='isSigningIn'
                                 onChange={
                                     this.handleToggle,
@@ -83,31 +83,44 @@ class HomePage extends React.Component {
                                 onClick={() => {
                                     this.setState({ isSigningIn: !this.state.isSigningIn });
                                 }}
+                                inverted
                             >
                                 {signInButton}
-                            </button>
+                            </CustomButton>
                         for the day. 
                     </label>
 <br></br>
                     <label>
-                        First Name:
-                        <input type="text" name="firstName" />   
+                    3. First Name
+                        <FormInput 
+                        name='firstName'
+                        type='firstName' 
+                        handleChange={this.handleChange}
+                        value={this.state.firstName}
+                        label='First Name'
+                        required 
+                        />   
                     </label>
-<br></br>
                     <label>
-                        Last Name:
-                        <input type="text" name="lastName" />   
+                    4. Last Name
+                        <FormInput 
+                        name='lastName'
+                        type='lastName' 
+                        handleChange={this.handleChange}
+                        value={this.state.lastName}
+                        label='Last Name'
+                        required 
+                        />
                     </label>
-<br></br>
                     <label>
-                        Confirmation:
+                    5. Confirmation:
                         {confimationMessage}
                         
                        
                     </label>
 <br></br>
 
-                    <button type="submit">Submit</button>
+                    <CustomButton type="submit">Submit</CustomButton>
                 </form>
             </div>
         );

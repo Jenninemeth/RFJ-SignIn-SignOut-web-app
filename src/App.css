@@ -2,15 +2,19 @@
 body, p {
     font-family: 'futura-pt';
     font-weight: 400;
-    min-width: 300px;
+    color: #303030;
+}
+.sign-in {
+    min-width: 200px;
+    max-width: 565px;
     width: auto;
-    margin-left: 5%;
-    margin-right: 5%;
-    
+    margin-left: auto;
+    margin-right: auto;
 }
 label {
     font-family: 'Roboto';
     font-weight: bold;
+    font-size: 18px;
 }
 a {
     text-decoration: none;

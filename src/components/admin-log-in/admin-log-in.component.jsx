@@ -38,7 +38,7 @@ class LogIn extends React.Component {
         return(
             <div className='log-in'>
                 <h2>Admin Log In</h2>
-                <span>Sign in with your email and password</span>
+                <span className='message'>Sign in with your email and password</span>
 
                 <form onSubmit={this.handleSubmit}>
                     <FormInput 

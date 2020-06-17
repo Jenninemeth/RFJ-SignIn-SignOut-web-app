@@ -63,7 +63,7 @@ class HomePage extends React.Component {
 
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        1. Job Number:
+                        1. Job Number
                         <select id="jobNumber" name="jobNumber" handleChange={this.handleChange}>
                             <option value="18109">18109</option>
                             <option value="23165">23165</option>
@@ -113,7 +113,7 @@ class HomePage extends React.Component {
                         />
                     </label>
                     <label>
-                    5. Confirmation:
+                    5. Confirmation
                         {confimationMessage}
                         
                        

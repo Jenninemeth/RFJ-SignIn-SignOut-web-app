@@ -1,0 +1,36 @@
+.header {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+  
+    .logo-container {
+      height: 100%;
+      width: 70px;
+      padding: 25px;
+    }
+  
+    .options {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 25px 5% 0 5%;
+  
+      .option-center {
+        
+        justify-content: left;
+        font-size: large;
+        align-items: center;
+        font-family: 'Open Sans';
+      }
+      .option {
+        padding: 10px 15px;
+        margin-left: auto;
+      }
+    }
+  }
+  

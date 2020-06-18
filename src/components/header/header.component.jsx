@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import useAuth from '../../redux/user/useAuth';
 import { auth } from '../../firebase/firebase.utils';
+import firebase from '../../firebase/firebase.utils';
 
 import logo from '../../assets/logo.jpg';
 import './header.component.styles.scss';
@@ -25,7 +26,7 @@ function Header(props) {
             </Link>*/}
             
             {user ? (
-                <div className='option' >
+                <div className='option' onClick={() => firebase.logout()}>
                     LOG OUT
                 </div>
                 ) : (

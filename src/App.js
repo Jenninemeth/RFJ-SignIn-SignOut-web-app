@@ -10,6 +10,7 @@ import Logger from './pages/logger/logger.component';
 import AdminSignIn from './pages/admin-sign-in/admin-sign-in';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
+import useAuth from './redux/user/useAuth';
 
 function App() {
   {/*
@@ -40,7 +41,8 @@ function App() {
 
   render() {
 */}
-  
+    const user = useAuth()
+    
     return (
       <div >
         <Header />

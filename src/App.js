@@ -11,7 +11,8 @@ import AdminSignIn from './pages/admin-sign-in/admin-sign-in';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
 
-class App extends React.Component {
+function App() {
+  {/*
   unsubscribeFromAuth = null;
 
   componentDidMount() {
@@ -38,6 +39,8 @@ class App extends React.Component {
   }
 
   render() {
+*/}
+  
     return (
       <div >
         <Header />
@@ -48,19 +51,12 @@ class App extends React.Component {
             
             <Route exact 
               path='/admin' 
-              render= {() => 
-                this.props.currentUser ? (
-                  <Redirect to='/logger' />
-                ) : ( 
-                  <AdminSignIn />
-                )
-              }
-            /> 
+              render= {AdminSignIn} /> 
           </Switch>
       </div>
     );
   }
-}
+
 
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser

@@ -37,7 +37,7 @@ class LogIn extends React.Component {
     render() {
         return(
             <div className='log-in'>
-                <h2>Admin Log In</h2>
+                <h2>ADMIN LOG IN</h2>
                 <span className='message'>Sign in with your email and password</span>
 
                 <form onSubmit={this.handleSubmit}>

@@ -3,102 +3,86 @@ import SignIn from '../../components/sign-in/sign-in.component';
 import SignOut from '../../components/sign-out/sign-out.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import FormInput from '../../components/form-input/form-input.component';
+import FirebaseContext from '../../firebase/context';
 
 import './homepage.styles.scss';
+import useFormValidation from '../../redux/form-validation';
+import validateForm from '../../redux/validateForm';
 
+const INITIAL_STATE = {
+    jobNumber: '18109',
+    isSigningIn: 'sign-in',
+    firstName: '',
+    lastName: '',
+    protocols: ''
+}
 
-class HomePage extends React.Component {
-    constructor(props) {
-        super(props);
+function HomePage(props) {
+    const { firebase } = React.useContext(FirebaseContext)
+    const { handleSubmit, handleChange, values, errors } = useFormValidation(
+        INITIAL_STATE,
+        validateForm,
+        handleCreateLink
+    );
 
-        this.state = {
-            jobNumber: '',
-            isSigningIn: true,
-            firstName: '',
-            lastName: '',
-            protocols: '',
-            injured: '',
-            breaksInjuryFree: ''
-        };
-    }
+    function handleCreateLink() {
+        console.log('submitted!')
+        const { jobNumber, isSigningIn, firstName, lastName, protocols } = values
+        const newSignIn = {
+            jobNumber,
+            isSigningIn,
+            firstName,
+            lastName,
+            time: Date.now(),
+            protocols
+        }
+        firebase.db.collection('log').add(newSignIn)
+        props.history.push('/');
+    }             
 
-    handleSubmit = event => {
-        event.preventDefault();
-
-        this.setState({
-            jobNumber: '',
-            isSigningIn: '',
-            firstName: '',
-            lastName: '',
-            protocols: '',
-            injured: '',
-            breaksInjuryFree: ''
-        });
-    };
-
-    handleChange = event => {
-        const { value, name } = event.target;
-
-        this.setState({ [name]: value });
-        console.log({ [name]: value });
-    }
-
-    handleToggle = (event) => {
-        this.setState = ({
-            isSigningIn: !this.state.isSigningIn
-        })
-    }
-    
-    render() {
-        const signInButton = this.state.isSigningIn ? "Signing in" : "Signing Out";
-        
-        const confimationMessage = this.state.isSigningIn ? (
-            <SignIn />
-        ) : (
-            <SignOut />
-        );  
-                        
-
-        return(
+    return(
         <div className='sign-in'>
+                <h1>Sign In Form</h1>
                 <h2>Please read through and answer all questions daily</h2>
 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <label className='title'>
                         1. Job Number
-                        <select className='job-number' id="jobNumber" name="jobNumber" handleChange={this.handleChange}>
+                        <select 
+                            className='job-number' 
+                            id="jobNumber" 
+                            name="jobNumber" 
+                            value="18109"
+                            onChange={handleChange}
+                            label='Job Number'
+                            required 
+                        >
                             <option value="18109">18109</option>
-                            <option value="23165">23165</option>
-                            <option value="49255">49255</option>
                         </select>   
                     </label>
 <br></br>
                     <label className='title'>
                         2. I am 
                         
-                            <CustomButton isSigningIn={this.state.isSigningIn}
-                                name='isSigningIn'
-                                onChange={
-                                    this.handleToggle,
-                                console.log("worked")
-                            }
-                                onClick={() => {
-                                    this.setState({ isSigningIn: !this.state.isSigningIn });
-                                }}
-                                inverted
-                            >
-                                {signInButton}
-                            </CustomButton>
+                    <CustomButton 
+                        name='isSigningIn'
+                        onChange={handleChange}
+                        label='Job Number'
+                        value='sign-in'
+                        inverted
+                        required 
+                    > Signing In
+                    </CustomButton>
                         for the day. 
                     </label>
 <br></br>
                     <label className='title'>
                     3. First Name
-                        <FormInput 
+                    <FormInput 
                         name='firstName'
                         type='firstName' 
-                        handleChange={this.handleChange}
-                        value={this.state.firstName}
+                        onChange={handleChange}
+                        value={values.firstName}
                         label='First Name'
                         required 
                         />   
@@ -108,25 +92,51 @@ class HomePage extends React.Component {
                         <FormInput 
                         name='lastName'
                         type='lastName' 
-                        handleChange={this.handleChange}
-                        value={this.state.lastName}
+                        onChange={handleChange}
+                        value={values.lastName}
                         label='Last Name'
                         required 
                         />
                     </label>
                     <label className='title'>
                     5. Confirmation
-                        {confimationMessage}
-                        
-                       
+                    <div>
+                    <p>Please read through and answer all questions daily. You must sign in at the beginning of your work day.</p>
+                    <p>Did you complete all necessary COVID-19 protocols to enter the job-site?</p>
+                        <div className='choices'>
+                            <div>
+                                <input 
+                                    name='protocols'
+                                    type='radio' 
+                                    value='YES'
+                                    label='YES'
+                                    onChange={handleChange}
+                                    id='protocols' 
+                                    required 
+                                    >
+                                </input>
+                                <label for="yes">Yes</label>
+                            </div>
+                            <div>
+                                <input 
+                                    name='protocols'
+                                    type='radio' 
+                                    value='NO'
+                                    label='NO'
+                                    onChange={handleChange}
+                                    id='protocols' >
+                                </input>
+                                <label for="yes">No</label>
+                            </div>
+                        </div>
+                </div>
                     </label>
-<br></br>
 
                     <CustomButton type="submit">Submit</CustomButton>
                 </form>
             </div>
-        );
-        };
+    );
 };
+
  
 export default HomePage;

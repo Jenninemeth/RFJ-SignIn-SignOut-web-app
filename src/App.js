@@ -11,6 +11,9 @@ import AdminSignIn from './pages/admin-sign-in/admin-sign-in';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
 import useAuth from './redux/user/useAuth';
+import { FirebaseContext } from './firebase/index';
+import firebase from './firebase/firebase.utils';
+import SignOut from './components/sign-out/sign-out.component';
 
 function App() {
   {/*
@@ -41,13 +44,16 @@ function App() {
 
   render() {
 */}
+    
     const user = useAuth()
     
     return (
+      <FirebaseContext.Provider value={{ user, firebase }}>
       <div >
         <Header />
           <Switch>
             <Route exact path='/' component={HomePage} />
+            <Route exact path='/sign-out' component={SignOut} />
             <Route exact path='/success' component={Success} />
             <Route path='/logger' component={Logger} />
             
@@ -56,6 +62,7 @@ function App() {
               render= {AdminSignIn} /> 
           </Switch>
       </div>
+      </FirebaseContext.Provider>
     );
   }
 

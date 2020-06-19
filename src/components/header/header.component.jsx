@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import useAuth from '../../redux/user/useAuth';
 import { auth } from '../../firebase/firebase.utils';
 import firebase from '../../firebase/firebase.utils';
+import { FirebaseContext } from '../../firebase/'
 
 import logo from '../../assets/logo.jpg';
 import './header.component.styles.scss';
@@ -11,6 +12,8 @@ import './header.component.styles.scss';
 function Header(props) {
     const user = useAuth();
     console.log({ user });
+    
+
     return(
     <div className='header' >
         <Link className='logo-container' to='/'>
@@ -19,7 +22,7 @@ function Header(props) {
 
         <div className='options' >
             <Link className='option-center' to='/'>
-                RFJ Meiswinkle Daily Sign In & Sign Out
+                RFJ Meiswinkel Daily Sign In & Sign Out
             </Link> {/*
             <Link className='option' to='/admin'>
                 LOG IN

@@ -13,7 +13,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 import useAuth from './redux/user/useAuth';
 import { FirebaseContext } from './firebase/index';
 import firebase from './firebase/firebase.utils';
-import SignOut from './components/sign-out/sign-out.component';
+import SignOut from './pages/sign-out/sign-out.component';
 
 function App() {
   {/*

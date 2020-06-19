@@ -29,8 +29,13 @@ function Header(props) {
             </Link>*/}
             
             {user ? (
+                <div className='option'>
+                <Link className='option' to='/logger'>
+                    ENTRY LOG
+                </Link>,
                 <div className='option' onClick={() => firebase.logout()}>
                     LOG OUT
+                </div>
                 </div>
                 ) : (
                 <Link className='option' to='/admin'>

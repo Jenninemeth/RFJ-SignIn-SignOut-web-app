@@ -3,19 +3,20 @@ import CustomButton from '../../components/custom-button/custom-button.component
 import FormInput from '../../components/form-input/form-input.component';
 import FirebaseContext from '../../firebase/context';
 
-import './homepage.styles.scss';
+import '../../pages/homepage/homepage.styles.scss';
 import useFormValidation from '../../redux/form-validation';
-import validateForm from '../../redux/validateForm'; 
+import validateForm from '../../redux/validateForm';
 
 const INITIAL_STATE = {
     jobNumber: '18109',
-    isSigningIn: 'sign-in',
+    isSigningIn: 'sign-out',
     firstName: '',
     lastName: '',
-    protocols: ''
+    injury: '',
+    breaks: 'YES'
 }
 
-function HomePage(props) {
+function SignOut(props) {
     const { firebase } = React.useContext(FirebaseContext)
     const { handleSubmit, handleChange, values, errors } = useFormValidation(
         INITIAL_STATE,
@@ -25,22 +26,23 @@ function HomePage(props) {
 
     function handleCreateLink() {
         console.log('submitted!')
-        const { jobNumber, isSigningIn, firstName, lastName, protocols } = values
-        const newSignIn = {
+        const { jobNumber, isSigningIn, firstName, lastName, injury, breaks } = values
+        const newSignOut = {
             jobNumber,
             isSigningIn,
             firstName,
             lastName,
-            time: new Date(),
-            protocols
+            timeOut: Date.now(),
+            injury,
+            breaks
         }
-        firebase.db.collection('log').add(newSignIn)
+        firebase.db.collection('log').add(newSignOut)
         props.history.push('/');
-    }             
+    } 
 
     return(
         <div className='sign-in'>
-                <h1>Sign In Form</h1>
+                <h1>Sign Out Form</h1>
                 <h2>Please read through and answer all questions daily</h2>
 
                 <form onSubmit={handleSubmit}>
@@ -66,10 +68,10 @@ function HomePage(props) {
                         name='isSigningIn'
                         onChange={handleChange}
                         label='Job Number'
-                        value='sign-in'
+                        value='sign-out'
                         inverted
                         required 
-                    > Signing In
+                    > Signing Out
                     </CustomButton>
                         for the day. 
                     </label>
@@ -99,17 +101,17 @@ function HomePage(props) {
                     <label className='title'>
                     5. Confirmation
                     <div>
-                    <p>Please read through and answer all questions daily. You must sign in at the beginning of your work day.</p>
-                    <p>Did you complete all necessary COVID-19 protocols to enter the job-site?</p>
+                    <p>You must sign out and confirm you have not been injured at the end of your work day. Failure to do so will involve disciplinary actions by your supervisor.</p>
+                    <p>Were you injured at all during work hours?</p>
                         <div className='choices'>
                             <div>
                                 <input 
-                                    name='protocols'
+                                    name='injury'
                                     type='radio' 
                                     value='YES'
                                     label='YES'
                                     onChange={handleChange}
-                                    id='protocols' 
+                                    id='injury' 
                                     required 
                                     >
                                 </input>
@@ -117,17 +119,18 @@ function HomePage(props) {
                             </div>
                             <div>
                                 <input 
-                                    name='protocols'
+                                    name='injury'
                                     type='radio' 
                                     value='NO'
                                     label='NO'
                                     onChange={handleChange}
-                                    id='protocols' >
+                                    id='injury' >
                                 </input>
                                 <label for="yes">No</label>
                             </div>
                         </div>
-                </div>
+                    </div>
+                    <p>By submitting, I acknowledge that I have taken all of my breaks, lunch, and rest periods. I also acknowledge that I am injury free, if I was able to be injured while working for RFJ Meiswinkle I have reported such injury to my supervisor.</p>
                     </label>
 
                     <CustomButton type="submit">Submit</CustomButton>
@@ -136,5 +139,4 @@ function HomePage(props) {
     );
 };
 
- 
-export default HomePage;
+export default SignOut;

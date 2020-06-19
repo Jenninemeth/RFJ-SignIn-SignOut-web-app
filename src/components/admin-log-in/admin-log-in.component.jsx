@@ -30,7 +30,7 @@ function LogIn(props) {
             const response = login
             await firebase.login(email, password)
             console.log({ response })
-            return <Redirect to='/logger' />
+            return (<Redirect to='/logger' />)
         } catch (err) {
             console.error('Authentication Error', err)
             setFirebaseError(err.message)

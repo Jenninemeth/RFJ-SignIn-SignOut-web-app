@@ -1,0 +1,28 @@
+.log-item {
+    width: 100%;
+    display: flex;
+    min-height: 70px;
+    border-bottom: 1px solid darkgrey;
+    padding: 15px 0;
+    font-size: 20px;
+    align-items: center;
+    display: inline-flex;
+} 
+.name{
+    width: 25%;
+}
+.time-in{
+    width: 15%;
+}
+.protocols{
+    width: 15%;
+}
+.time-out{
+    width: 15%;
+}
+.injury{
+    width: 15%;
+}
+.breaks{
+    width: 15%;
+}

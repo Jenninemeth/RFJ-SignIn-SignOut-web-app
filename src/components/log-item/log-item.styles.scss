@@ -1,0 +1,46 @@
+.log-page {
+    width: 55%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto 0;
+  
+    .search {
+        display: inline-flex;
+        margin: 30px;
+        label {
+            padding: 0 15px 0 15px;
+        }
+    }
+    .log-header {
+      width: 100%;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid darkgrey;
+  
+      .log-block {
+        text-transform: capitalize;
+        width: 23%;
+      }
+      .name{
+        width: 25%;
+    }
+    .time-in{
+        width: 15%;
+    }
+    .protocols{
+        width: 15%;
+    }
+    .time-out{
+        width: 15%;
+    }
+    .injury{
+        width: 15%;
+    }
+    .breaks{
+        width: 15%;
+    }
+    }
+}

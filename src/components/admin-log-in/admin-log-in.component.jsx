@@ -1,14 +1,11 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import CustomButton from '../custom-button/custom-button.component';
 import FormInput from '../form-input/form-input.component';
-import { auth } from '../../firebase/firebase.utils';
 import useFormValidation from '../../redux/form-validation';
 import firebase from '../../firebase/firebase.utils';
 import validateLogin from './validateLogin';
 
 import './admin-log-in.styles.scss';
-{/* from new course */}
 
 const INITIAL_STATE = {
     email: '',
@@ -21,16 +18,13 @@ function LogIn(props) {
         validateLogin, 
         authenticateUser
     );
-    const [login, setLogin] = React.useState(true);
+    const [login] = React.useState(true);
     const [firebaseError, setFirebaseError] = React.useState(null)
 
     async function authenticateUser() {
         const { email, password } = values;
         try {
-            const response = login
             await firebase.login(email, password)
-            console.log({ response })
-            return (<Redirect to='/logger' />)
         } catch (err) {
             console.error('Authentication Error', err)
             setFirebaseError(err.message)

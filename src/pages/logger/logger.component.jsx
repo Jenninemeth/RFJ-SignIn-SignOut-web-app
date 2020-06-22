@@ -5,7 +5,7 @@ import useAuth from '../../redux/user/useAuth';
 
 import './logger.styles.scss';
 
-function Logger(props) {
+function Logger() {
     const user = useAuth();
 
     return(
@@ -13,7 +13,6 @@ function Logger(props) {
         {user ? (
             <LogItem />
             ) : (
-            
             <Link className='log-in' to='/admin'>
                 Please LOG IN
             </Link>

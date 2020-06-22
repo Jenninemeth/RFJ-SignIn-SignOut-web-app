@@ -1,13 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import FormInput from '../../components/form-input/form-input.component';
 import FirebaseContext from '../../firebase/context';
-
-import './homepage.styles.scss';
 import useFormValidation from '../../redux/form-validation';
-import validateForm from '../../redux/validateForm'; 
+import validateForm from '../../redux/validateForm';
+import { v4 as uuidv4 } from 'uuid';
+
+import './sign-in.styles.scss';
 
 const INITIAL_STATE = {
+    id: uuidv4(),
     jobNumber: '18109',
     isSigningIn: 'sign-in',
     firstName: '',
@@ -15,18 +18,18 @@ const INITIAL_STATE = {
     protocols: ''
 }
 
-function HomePage(props) {
+function SignIn(props) {
     const { firebase } = React.useContext(FirebaseContext)
-    const { handleSubmit, handleChange, values, errors } = useFormValidation(
+    const { handleSubmit, handleChange, values } = useFormValidation(
         INITIAL_STATE,
         validateForm,
         handleCreateLink
     );
 
     function handleCreateLink() {
-        console.log('submitted!')
-        const { jobNumber, isSigningIn, firstName, lastName, protocols } = values
+        const { id, jobNumber, isSigningIn, firstName, lastName, protocols } = values
         const newSignIn = {
+            id,
             jobNumber,
             isSigningIn,
             firstName,
@@ -35,13 +38,14 @@ function HomePage(props) {
             protocols
         }
         firebase.db.collection('log').add(newSignIn)
-        props.history.push('/');
+        props.history.push('/success');
     }             
 
     return(
         <div className='sign-in'>
                 <h1>Sign In Form</h1>
                 <h2>Please read through and answer all questions daily</h2>
+                <Link className='language' to='/sign-in-es'>Español</Link>
 
                 <form onSubmit={handleSubmit}>
                     <label className='title'>
@@ -99,7 +103,7 @@ function HomePage(props) {
                     <label className='title'>
                     5. Confirmation
                     <div>
-                    <p>Please read through and answer all questions daily. You must sign in at the beginning of your work day.</p>
+                    <p>Please read through and answer all questions daily. You must sign in at the beginning of your workday.</p>
                     <p>Did you complete all necessary COVID-19 protocols to enter the job-site?</p>
                         <div className='choices'>
                             <div>
@@ -127,14 +131,12 @@ function HomePage(props) {
                                 <label for="yes">No</label>
                             </div>
                         </div>
-                </div>
+                    </div>
                     </label>
-
                     <CustomButton type="submit">Submit</CustomButton>
                 </form>
             </div>
     );
 };
 
- 
-export default HomePage;
+export default SignIn;

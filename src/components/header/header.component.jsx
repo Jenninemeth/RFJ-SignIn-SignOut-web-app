@@ -1,32 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import useAuth from '../../redux/user/useAuth';
-import { auth } from '../../firebase/firebase.utils';
 import firebase from '../../firebase/firebase.utils';
-import { FirebaseContext } from '../../firebase/'
 
 import logo from '../../assets/logo.jpg';
 import './header.component.styles.scss';
 
-function Header(props) {
+function Header() {
     const user = useAuth();
-    console.log({ user });
     
-
     return(
     <div className='header' >
-        <Link className='logo-container' to='/'>
+        <Link className='logo-container' to='/sign-in'>
             <img src={logo} alt="Logo" width="50em"/>
         </Link>
 
         <div className='options' >
-            <Link className='option-center' to='/'>
-                RFJ Meiswinkel Daily Sign In & Sign Out
-            </Link> {/*
-            <Link className='option' to='/admin'>
-                LOG IN
-            </Link>*/}
+            <Link className='option-center' to='/sign-in'>
+                RFJ Meiswinkel Daily <Link className='language' to ='/sign-in'>Sign In</Link> & <Link className='language' to='/sign-out'>Sign Out</Link>
+            </Link> 
             
             {user ? (
                 <div className='option'>
@@ -47,7 +39,4 @@ function Header(props) {
     );       
 };
 
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
-})
-export default connect(mapStateToProps)(Header);
+export default Header;

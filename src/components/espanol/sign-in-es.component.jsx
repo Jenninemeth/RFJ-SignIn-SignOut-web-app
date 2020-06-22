@@ -1,25 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CustomButton from '../../components/custom-button/custom-button.component';
-import FormInput from '../../components/form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+import FormInput from '../form-input/form-input.component';
 import FirebaseContext from '../../firebase/context';
-import { v4 as uuidv4 } from 'uuid';
 import useFormValidation from '../../redux/form-validation';
 import validateForm from '../../redux/validateForm';
+import { v4 as uuidv4 } from 'uuid';
 
-import '../sign-in/sign-in.styles.scss';
+import '../../pages/sign-in/sign-in.styles.scss';
 
 const INITIAL_STATE = {
     id: uuidv4(),
     jobNumber: '18109',
-    isSigningIn: 'sign-out',
+    isSigningIn: 'sign-in',
     firstName: '',
     lastName: '',
-    injury: '',
-    breaks: 'YES'
+    protocols: ''
 }
 
-function SignOut(props) {
+function SignInEs(props) {
     const { firebase } = React.useContext(FirebaseContext)
     const { handleSubmit, handleChange, values } = useFormValidation(
         INITIAL_STATE,
@@ -28,30 +27,29 @@ function SignOut(props) {
     );
 
     function handleCreateLink() {
-        const { id, jobNumber, isSigningIn, firstName, lastName, injury, breaks } = values
-        const newSignOut = {
+        const { id, jobNumber, isSigningIn, firstName, lastName, protocols } = values
+        const newSignIn = {
             id,
             jobNumber,
             isSigningIn,
             firstName,
             lastName,
-            timeOut: Date.now(),
-            injury,
-            breaks
+            time: new Date(),
+            protocols
         }
-        firebase.db.collection('log').add(newSignOut)
+        firebase.db.collection('log').add(newSignIn)
         props.history.push('/success');
-    } 
+    }             
 
     return(
         <div className='sign-in'>
-                <h1>Sign Out Form</h1>
-                <h2>Please read through and answer all questions daily</h2>
-                <Link className='language' to='/sign-out-es'>Español</Link>
+                <h1>Formulario de inicio de sesión</h1>
+                <h2>Lea y responda todas las preguntas a diario.</h2>
+                <Link className='language' to='/sign-in'>English</Link>
 
                 <form onSubmit={handleSubmit}>
                     <label className='title'>
-                        1. Job Number
+                        1. Número de trabajo
                         <select 
                             className='job-number' 
                             id="jobNumber" 
@@ -66,81 +64,79 @@ function SignOut(props) {
                     </label>
 <br></br>
                     <label className='title'>
-                        2. I am 
+                        2. Estoy
                         
                     <CustomButton 
                         name='isSigningIn'
                         onChange={handleChange}
                         label='Job Number'
-                        value='sign-out'
+                        value='sign-in'
                         inverted
                         required 
-                    > Signing Out
+                    > iniciando sesión
                     </CustomButton>
-                        for the day. 
+                        por el dia. 
                     </label>
 <br></br>
                     <label className='title'>
-                    3. First Name
+                    3. Nombre de pila
                     <FormInput 
                         name='firstName'
                         type='firstName' 
                         onChange={handleChange}
                         value={values.firstName}
-                        label='First Name'
+                        label='Nombre de pila'
                         required 
                         />   
                     </label>
                     <label className='title'>
-                    4. Last Name
+                    4. Apellido
                         <FormInput 
                         name='lastName'
                         type='lastName' 
                         onChange={handleChange}
                         value={values.lastName}
-                        label='Last Name'
+                        label='Apellido'
                         required 
                         />
                     </label>
                     <label className='title'>
-                    5. Confirmation
+                    5. Confirmación
                     <div>
-                    <p>You must sign out and confirm you have not been injured at the end of your workday. Failure to do so will involve disciplinary actions by your supervisor.</p>
-                    <p>Were you injured at all during work hours?</p>
+                    <p>Lea y responda todas las preguntas diariamente. Debe iniciar sesión al comienzo de su día de trabajo.</p>
+                    <p>¿Completó todos los protocolos COVID-19 necesarios para ingresar al sitio de trabajo?</p>
                         <div className='choices'>
                             <div>
                                 <input 
-                                    name='injury'
+                                    name='protocols'
                                     type='radio' 
                                     value='YES'
                                     label='YES'
                                     onChange={handleChange}
-                                    id='injury' 
+                                    id='protocols' 
                                     required 
                                     >
                                 </input>
-                                <label for="yes">Yes</label>
+                                <label for="yes">Si</label>
                             </div>
                             <div>
                                 <input 
-                                    name='injury'
+                                    name='protocols'
                                     type='radio' 
                                     value='NO'
                                     label='NO'
                                     onChange={handleChange}
-                                    id='injury' >
+                                    id='protocols' >
                                 </input>
                                 <label for="yes">No</label>
                             </div>
                         </div>
                     </div>
-                    <p>By submitting, I acknowledge that I have taken all of my breaks, lunch, and rest periods. I also acknowledge that I am injury free, if I was able to be injured while working for RFJ Meiswinkle I have reported such injury to my supervisor.</p>
                     </label>
-
-                    <CustomButton type="submit">Submit</CustomButton>
+                    <CustomButton type="submit">Enviar</CustomButton>
                 </form>
             </div>
     );
 };
 
-export default SignOut;
+export default SignInEs;

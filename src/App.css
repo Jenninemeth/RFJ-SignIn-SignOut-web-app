@@ -57,13 +57,19 @@ select {
 h1 {
     font-family: 'Roboto';
     font-size: 22pt;
+    font-weight: lighter;
     margin: 0 0 0 0;
 }
 h2 {
     font-family: 'futura-pt';
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0.5px;
     margin: 0 0 0 0;
+}
+.language {
+    color: dodgerblue;
+    font-weight: bold;
+    padding-top:510px;
 }
 /* grids */
 .choices {

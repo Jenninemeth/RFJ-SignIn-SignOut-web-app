@@ -6,6 +6,7 @@ import FirebaseContext from '../../firebase/context';
 import useFormValidation from '../../redux/form-validation';
 import validateForm from '../../redux/validateForm';
 import { v4 as uuidv4 } from 'uuid';
+import * as moment from "moment";
 
 import '../../pages/sign-in/sign-in.styles.scss';
 
@@ -13,6 +14,8 @@ const INITIAL_STATE = {
     id: uuidv4(),
     jobNumber: '18109',
     isSigningIn: 'sign-in',
+    date: '',
+    timeIn: '',
     firstName: '',
     lastName: '',
     protocols: ''
@@ -27,14 +30,16 @@ function SignInEs(props) {
     );
 
     function handleCreateLink() {
-        const { id, jobNumber, isSigningIn, firstName, lastName, protocols } = values
+        const { id, jobNumber, isSigningIn, date, timeIn, firstName, lastName, protocols } = values
+        const getDate = new Date();
         const newSignIn = {
             id,
             jobNumber,
             isSigningIn,
             firstName,
             lastName,
-            time: new Date(),
+            timeIn: moment(getDate).format('h:mm a'),
+            date: moment(getDate).format('L'),
             protocols
         }
         firebase.db.collection('log').add(newSignIn)

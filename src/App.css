@@ -44,11 +44,11 @@ select {
     font-weight: bold;
     min-width: 105px;
     margin: 45px 0;
-      background-color: white;
-      color: black;
-      padding: 10px 5px 10px 25px;
-      border: 1px solid black;
-      display: inline-flex;
+    background-color: white;
+    color: black;
+    padding: 10px 5px 10px 25px;
+    border-bottom: 1px solid black;
+    display: inline-flex;
 
 }
 * {

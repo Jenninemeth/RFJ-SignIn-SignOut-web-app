@@ -13,7 +13,7 @@ function Logger() {
         {user ? (
             <LogItem />
             ) : (
-            <Link className='log-in' to='/admin'>
+            <Link className='language' to='/admin'>
                 Please LOG IN
             </Link>
             )}

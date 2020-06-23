@@ -6,13 +6,16 @@ import FirebaseContext from '../../firebase/context';
 import { v4 as uuidv4 } from 'uuid';
 import useFormValidation from '../../redux/form-validation';
 import validateForm from '../../redux/validateForm';
+import * as moment from "moment";
 
 import '../sign-in/sign-in.styles.scss';
 
 const INITIAL_STATE = {
-    id: uuidv4(),
+    id: '',
     jobNumber: '18109',
     isSigningIn: 'sign-out',
+    date: '',
+    timeOut: '',
     firstName: '',
     lastName: '',
     injury: '',
@@ -28,14 +31,16 @@ function SignOut(props) {
     );
 
     function handleCreateLink() {
-        const { id, jobNumber, isSigningIn, firstName, lastName, injury, breaks } = values
+        const { id, jobNumber, isSigningIn, date, timeOut, firstName, lastName, injury, breaks } = values
+        const getDate = new Date();
         const newSignOut = {
             id,
             jobNumber,
             isSigningIn,
             firstName,
             lastName,
-            timeOut: Date.now(),
+            timeOut: moment(getDate).format('h:mm a'),
+            date: moment(getDate).format('L'),
             injury,
             breaks
         }

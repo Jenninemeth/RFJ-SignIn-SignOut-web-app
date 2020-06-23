@@ -2,6 +2,7 @@ import React from 'react';
 import FirebaseContext from '../../firebase/context';
 import EntryItem from './entry-item.component';
 import useAuth from '../../redux/user/useAuth';
+import * as moment from "moment";
 
 import './log-item.styles.scss';
 
@@ -11,11 +12,8 @@ function LogItem() {
     const [entrys, setEntrys] = React.useState([])
     
     React.useEffect(() => {
-        
         firebase.db.collection('log').onSnapshot(handleSnapshot)
-    
-        return () => {
-            
+        return () => {        
         }
     }, [])
 
@@ -28,21 +26,13 @@ function LogItem() {
     return (
 
         <div className='log-page'>
-            <div className='search'>
-                <label>
-                    Job Number: 18109
-                </label>
-                
-                <label>
-                    Search by Date:
-                    <input type="date" id="search" name="search-by-date"
-                        value="">
-                    </input>
-                </label>
-            </div>
+            
             <div className='log-header'>
                 <div className='name'>
                     <span>Name</span>
+                </div>
+                <div className='date'>
+                    <span>Date</span>
                 </div>
                 <div className='time-in'>
                     <span>Sign In</span>

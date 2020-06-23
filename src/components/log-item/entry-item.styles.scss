@@ -1,16 +1,19 @@
 .log-item {
     width: 100%;
     display: flex;
-    min-height: 70px;
+    min-height: 50px;
     border-bottom: 1px solid darkgrey;
     padding: 15px 0;
-    font-size: 20px;
+    font-size: 16px;
     align-items: center;
     margin: 0 auto 0 auto;
     display: inline-flex;
 } 
+.date{
+    width: 15%;
+}
 .name{
-    width: 25%;
+    width: 20%;
 }
 .time-in{
     width: 15%;

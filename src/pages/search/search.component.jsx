@@ -13,6 +13,8 @@ function Search() {
     const [filter, setFilter] = React.useState("");
     
     React.useEffect(() => {
+        const unsub = firebase.db.collection('log').onSnapshot(() => {
+        });
         firebase.db
         .collection('log')
         .get()
@@ -22,7 +24,10 @@ function Search() {
             })
             setEntrys(entrys)
         })
-    })
+        return () => {
+            unsub();
+        }
+    }, []);
 
     function handleSearch(event) {
         event.preventDefault();

@@ -10,11 +10,14 @@ function LogItem() {
     const [entrys, setEntrys] = React.useState([]);
     
     React.useEffect(() => {
+        const unsub = firebase.db.collection('log').onSnapshot(() => {
+        });
         firebase.db
         .collection('log')
         .orderBy('date', 'desc')
         .onSnapshot(handleSnapshot);
-        return () => {        
+        return () => {   
+            unsub();    
         }
     }, []);
 

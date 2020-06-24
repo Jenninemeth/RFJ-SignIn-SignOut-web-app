@@ -46,7 +46,7 @@ function SignOut(props) {
         }
         firebase.db.collection('log').add(newSignOut)
         props.history.push('/success');
-    } 
+    }             
 
     return(
         <div className='sign-in'>

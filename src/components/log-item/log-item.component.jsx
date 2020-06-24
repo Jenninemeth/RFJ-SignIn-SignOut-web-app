@@ -1,32 +1,40 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FirebaseContext from '../../firebase/context';
 import EntryItem from './entry-item.component';
-import useAuth from '../../redux/user/useAuth';
-import * as moment from "moment";
 
 import './log-item.styles.scss';
 
 function LogItem() {
-    const user = useAuth; 
     const { firebase } = React.useContext(FirebaseContext);
-    const [entrys, setEntrys] = React.useState([])
+    const [entrys, setEntrys] = React.useState([]);
     
     React.useEffect(() => {
-        firebase.db.collection('log').onSnapshot(handleSnapshot)
+        firebase.db
+        .collection('log')
+        .orderBy('date', 'desc')
+        .onSnapshot(handleSnapshot);
         return () => {        
         }
-    }, [])
+    }, []);
 
     function handleSnapshot(snapshot) {
         const entrys = snapshot.docs.map(doc => {
-            return { ...doc.data() }
-        })
-        setEntrys(entrys)
+            return { date: doc.date, ...doc.data() };
+        });
+        setEntrys(entrys);
     }
     return (
 
         <div className='log-page'>
-            
+            <div className='search'>
+                <label>
+                    Job Number: 18109
+                </label>
+                <Link className='search-link' to='/search'>
+                    Search by Name or Date
+                </Link>
+            </div>
             <div className='log-header'>
                 <div className='name'>
                     <span>Name</span>

@@ -5,12 +5,28 @@
     flex-direction: column;
     align-items: center;
     margin: 50px auto 0;
+
+    form {
+        font-weight: bold;
+        font-family: 'Roboto';
+
+        input {
+            margin-right: 30px;
+            height: 30px;
+        }
+    }
   
     .search {
         display: inline-flex;
         margin: 30px;
         label {
-            padding: 0 15px 0 15px;
+            padding: 0 25px 0 25px;
+        }
+        .search-link {
+            padding: 0 25px 0 25px;
+            color: dodgerblue;
+            font-weight: bold;
+            font-size: 14pt;
         }
     }
     .log-header {
@@ -35,6 +51,7 @@
     }
     .protocols{
         width: 15%;
+        padding-right: 5%;
     }
     .time-out{
         width: 15%;

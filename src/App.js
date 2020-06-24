@@ -15,6 +15,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 import useAuth from './redux/user/useAuth';
 import { FirebaseContext } from './firebase/index';
 import firebase from './firebase/firebase.utils';
+import SearchPage from './pages/search/search-page.component';
 
 function App() {
     const user = useAuth()
@@ -30,6 +31,7 @@ function App() {
             <Route exact path='/sign-out-es' component={SignOutEs} />
             <Route exact path='/success' component={Success} />
             <Route path='/logger' component={Logger} />
+            <Route path='/search' component={SearchPage} />
             <Route exact 
               path='/admin' 
               render={() =>

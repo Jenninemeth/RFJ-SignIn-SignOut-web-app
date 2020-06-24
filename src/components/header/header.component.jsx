@@ -17,7 +17,7 @@ function Header() {
 
         <div className='options' >
             <Link className='option-center' to='/sign-in'>
-                RFJ Meiswinkel Daily <Link className='language' to ='/sign-in'>Sign In</Link> & <Link className='language' to='/sign-out'>Sign Out</Link>
+                RFJ Meiswinkel Daily <Link className='blue' to ='/sign-in'>Sign In</Link> & <Link className='blue' to='/sign-out'>Sign Out</Link>
             </Link> 
             
             {user ? (

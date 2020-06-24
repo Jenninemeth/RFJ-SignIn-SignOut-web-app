@@ -138,7 +138,7 @@ function SignOutEs(props) {
                         </div>
                     </div>
                 </div>
-                <p>Al enviar, reconozco que he tomado todos mis descansos, almuerzos y períodos de descanso. También reconozco que estoy libre de lesiones, si pude lastimarme mientras trabajaba para RFJ Meiswinkle, he informado de tal lesión a mi supervisor.</p>
+                <p>Al enviar, reconozco que he tomado todos mis descansos, almuerzos y períodos de descanso. También reconozco que estoy libre de lesiones, si pude lastimarme mientras trabajaba para RFJ Meiswinkel, he informado de tal lesión a mi supervisor.</p>
                 </label>
                     <CustomButton type="submit">Enviar</CustomButton>
                 </form>

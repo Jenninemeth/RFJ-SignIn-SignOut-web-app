@@ -11,7 +11,7 @@ import * as moment from "moment";
 import '../sign-in/sign-in.styles.scss';
 
 const INITIAL_STATE = {
-    id: '',
+    id: uuidv4(),
     jobNumber: '18109',
     isSigningIn: 'sign-out',
     date: '',
@@ -139,7 +139,7 @@ function SignOut(props) {
                             </div>
                         </div>
                     </div>
-                    <p>By submitting, I acknowledge that I have taken all of my breaks, lunch, and rest periods. I also acknowledge that I am injury free, if I was able to be injured while working for RFJ Meiswinkle I have reported such injury to my supervisor.</p>
+                    <p>By submitting, I acknowledge that I have taken all of my breaks, lunch, and rest periods. I also acknowledge that I am injury free, if I was able to be injured while working for RFJ Meiswinkel I have reported such injury to my supervisor.</p>
                     </label>
 
                     <CustomButton type="submit">Submit</CustomButton>

@@ -11,7 +11,7 @@ import * as moment from "moment";
 import './sign-in.styles.scss';
 
 const INITIAL_STATE = {
-    id: '',
+    id: uuidv4(),
     jobNumber: '18109',
     isSigningIn: 'sign-in',
     date: '',

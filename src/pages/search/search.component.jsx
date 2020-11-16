@@ -36,7 +36,7 @@ function Search() {
             return (
             entry.firstName.toLowerCase().includes(query) ||
             entry.lastName.toLowerCase().includes(query) ||
-            entry.date.includes(query)
+            entry.date.includes(query) 
             );
         });
         setFilteredEntrys(matchedEntrys);
@@ -71,6 +71,9 @@ function Search() {
                 </div>
                 <div className='breaks'>
                     <span>Taken breaks & Injury free?</span>
+                </div>
+                <div className='tasksCompleted'>
+                    <span>Tasks list</span>
                 </div>
             </div>
             {filteredEntrys.map((filteredEntry, index) => (

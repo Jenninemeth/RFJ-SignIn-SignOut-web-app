@@ -12,6 +12,7 @@ function EntryItem({ entry, index, showCount }) {
             <span className='time-out'>{JSON.stringify(entry.timeOut)}</span>
             <span className='injury'>{entry.injury}</span>
             <span className='breaks'>{entry.breaks}</span>
+            <span className='tasksCompleted'>{entry.tasksCompleted}</span>
         </div>
     )
 }

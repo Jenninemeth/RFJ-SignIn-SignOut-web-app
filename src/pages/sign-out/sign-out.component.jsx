@@ -18,6 +18,7 @@ const INITIAL_STATE = {
     timeOut: '',
     firstName: '',
     lastName: '',
+    tasksCompleted: '',
     injury: '',
     breaks: 'YES'
 }
@@ -31,7 +32,7 @@ function SignOut(props) {
     );
 
     function handleCreateLink() {
-        const { id, jobNumber, isSigningIn, date, timeOut, firstName, lastName, injury, breaks } = values
+        const { id, jobNumber, isSigningIn, date, timeOut, firstName, lastName, tasksCompleted, injury, breaks } = values
         const getDate = new Date();
         const newSignOut = {
             id,
@@ -39,6 +40,7 @@ function SignOut(props) {
             isSigningIn,
             firstName,
             lastName,
+            tasksCompleted,
             timeOut: moment(getDate).format('h:mm a'),
             date: moment(getDate).format('L'),
             injury,
@@ -92,7 +94,7 @@ function SignOut(props) {
                         type='firstName' 
                         onChange={handleChange}
                         value={values.firstName}
-                        label='First Name'
+                        label=''
                         required 
                         />   
                     </label>
@@ -103,12 +105,23 @@ function SignOut(props) {
                         type='lastName' 
                         onChange={handleChange}
                         value={values.lastName}
-                        label='Last Name'
+                        label=''
                         required 
                         />
                     </label>
                     <label className='title'>
-                    5. Confirmation
+                    5. What floor were you working on, and what was your task?
+                        <FormInput 
+                        name='tasksCompleted'
+                        type='tasksCompleted' 
+                        onChange={handleChange}
+                        value={values.tasksCompleted}
+                        label=''
+                        required 
+                        />
+                    </label>
+                    <label className='title'>
+                    6. Confirmation
                     <div>
                     <p>You must sign out and confirm you have not been injured at the end of your workday. Failure to do so will involve disciplinary actions by your supervisor.</p>
                     <p>Were you injured at all during work hours?</p>

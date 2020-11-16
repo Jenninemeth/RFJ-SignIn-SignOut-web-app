@@ -18,6 +18,7 @@ const INITIAL_STATE = {
     timeOut: '',
     firstName: '',
     lastName: '',
+    tasksCompleted: '',
     injury: '',
     breaks: 'YES'
 }
@@ -31,7 +32,7 @@ function SignOutEs(props) {
     );
 
     function handleCreateLink() {
-        const { id, jobNumber, isSigningIn, date, timeOut, firstName, lastName, injury, breaks } = values
+        const { id, jobNumber, isSigningIn, date, timeOut, firstName, lastName, tasksCompleted, injury, breaks } = values
         const getDate = new Date();
         const newSignOut = {
             id,
@@ -39,6 +40,7 @@ function SignOutEs(props) {
             isSigningIn,
             firstName,
             lastName,
+            tasksCompleted,
             timeOut: moment(getDate).format('h:mm a'),
             date: moment(getDate).format('L'),
             injury,
@@ -91,7 +93,7 @@ function SignOutEs(props) {
                         type='firstName' 
                         onChange={handleChange}
                         value={values.firstName}
-                        label='Nombre de pila'
+                        label=''
                         required 
                         />   
                     </label>
@@ -102,12 +104,23 @@ function SignOutEs(props) {
                         type='lastName' 
                         onChange={handleChange}
                         value={values.lastName}
-                        label='Apellido'
+                        label=''
                         required 
                         />
                     </label>
                     <label className='title'>
-                    5. Confirmación
+                    5. ¿En qué piso estaba trabajando y cuál era su tarea?
+                        <FormInput 
+                        name='tasksCompleted'
+                        type='tasksCompleted' 
+                        onChange={handleChange}
+                        value={values.tasksCompleted}
+                        label=''
+                        required 
+                        />
+                    </label>
+                    <label className='title'>
+                    6. Confirmación
                     <div>
                     <p>Debe cerrar sesión y confirmar que no se lesionó al final de su jornada laboral. No hacerlo implicará acciones disciplinarias por parte de su supervisor.</p>
                     <p>¿Se lesionó durante las horas de trabajo?</p>

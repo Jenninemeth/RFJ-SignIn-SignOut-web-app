@@ -60,6 +60,9 @@ function LogItem() {
                 <div className='breaks'>
                     <span>Taken breaks & Injury free?</span>
                 </div>
+                <div className='tasksCompleted'>
+                    <span>Tasks list</span>
+                </div>
             </div>
             {entrys.map((entry, index) => (
                 <EntryItem key={entry.id} showCount={true} index={index + 1} entry={entry}  />
